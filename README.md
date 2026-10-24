@@ -2,7 +2,7 @@
 
 一套面向中文大学实验报告的写作规则，帮助 AI 说明方法选择、记录关键操作、解释图表结果，并写出有实际依据的实验思考。适用于 GIS、地理建模、WebGIS、科学计算和 C++ 等课程。
 
-当前版本：**v0.1.0**。规则由 7 份历史报告归纳，提供者已核验关键内容；实际风格匹配仍需通过新稿反馈调整。它通过规则和例子引导写作，不涉及模型训练。
+当前版本：**v0.2.0**。规则由 7 份历史报告归纳，提供者已核验关键内容；实际风格匹配仍需通过新稿反馈调整。它通过规则和例子引导写作，不涉及模型训练。
 
 ## 快速使用
 
@@ -10,9 +10,35 @@
 
 > 请先读取 skills/course-lab-report/SKILL.md 及当前任务需要的参考文件。根据本次题目、数据和图表组织实验报告，解释方法的理由、关键操作和结果含义。先从材料最充分的结果段写起，最后补齐目的与总结；缺少的事实不要补造。
 
-在支持 `SKILL.md` 的工具中，将整个 `skills/course-lab-report` 文件夹放入该工具的技能目录，并保留 `references` 子目录。其他 AI 工具也可以直接读取或接收这 4 个 Markdown 文件。
+在支持 `SKILL.md` 的工具中，将整个 `skills/course-lab-report` 文件夹放入该工具的技能目录，并保留 `references` 子目录。其他 AI 工具也可以直接读取或接收入口及参考文件。
 
 本次课程要求和用户指定模板优先。若希望贴合自己的表达，可再提供同课程范文，让 AI 依据新样本调整规则。
+
+## 与其他项目配合
+
+本仓库负责个人写作规则；下面的项目按任务提供辅助能力。它们都是可选项，安装本仓库不会自动安装或启用第三方工具，也不代表与上游存在官方合作关系。
+
+| 项目 | 在实验报告中的作用 | 本仓库提供的配合方式 |
+|---|---|---|
+| [Anthropic Skills](https://github.com/anthropics/skills) | 整理材料、协作起草、处理 Word/PDF、改进技能 | Claude Code 插件入口，以及与 `doc-coauthoring`、`skill-creator`、文档技能的分工 |
+| [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm) | 检索课程材料和历史范文 | 工作区系统提示词、知识库导入清单与检索检查 |
+| [Humanizer](https://github.com/blader/humanizer) | 参考作者样本润色已有文本 | 保留作者语气及实验事实的调用方式，可用于英文段落 |
+| [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills) | 统计、地理分析、绘图和引用管理 | 按当前问题选择技能，分析结果回到本仓库的报告写法 |
+| [Cherry Studio](https://github.com/CherryHQ/cherry-studio) | 管理写作助手、知识库和 Agent Skills | 助手提示词、知识库方案，以及本技能的导入和启用说明 |
+| [Humanizer-zh](https://github.com/op7418/Humanizer-zh) | 修改中文空话、重复及模板化表达 | 一份保留事实、限定条件和个人写法的润色提示词 |
+
+完整步骤见 **[六个项目的配合使用指南](docs/integrations.md)**。可以先使用本技能完成一小段报告，需要中文润色时再加入 Humanizer-zh；需要长期管理材料时再选择 AnythingLLM 或 Cherry Studio。
+
+### 作为 Claude Code 插件使用
+
+下面两行输入 **Claude Code 对话框**，不是 PowerShell：
+
+```text
+/plugin marketplace add mengyoutianji-ux/course-lab-report-skill
+/plugin install course-lab-report@course-report-skills
+```
+
+完成界面中的安装并确认插件已启用后，可使用 `/course-lab-report:course-lab-report`，再附上本次材料。插件包含的仍是同一套写作规则。其他客户端请使用上面的技能文件夹方式或配合使用指南，不要直接套用这些 Claude Code 命令。
 
 ## 核心写法
 
@@ -46,6 +72,11 @@
 | [writing-profile.md](skills/course-lab-report/references/writing-profile.md) | 写作习惯、课程适配和无法动笔时的起草入口 |
 | [examples.md](skills/course-lab-report/references/examples.md) | 8 组匿名样本例证，以及一组试写比较 |
 | [layout-and-sources.md](skills/course-lab-report/references/layout-and-sources.md) | 匿名样本说明、版式差异和格式选择规则 |
+| [tool-cooperation.md](skills/course-lab-report/references/tool-cooperation.md) | 多个技能同时可用时的分工、交接和冲突处理 |
+| [integrations.md](docs/integrations.md) | 六个相关项目的接入方法和官方来源 |
+| [assistant-system.md](integrations/prompts/assistant-system.md) | 可粘贴到 AnythingLLM 或 Cherry Studio 的完整助手提示词 |
+| [polish-zh.md](integrations/prompts/polish-zh.md) | 中文报告最后一轮润色请求 |
+| [plugin.json](.claude-plugin/plugin.json) / [marketplace.json](.claude-plugin/marketplace.json) | Claude Code 插件元数据和安装入口 |
 
 ## 样本与事实的边界
 

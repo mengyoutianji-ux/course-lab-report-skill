@@ -1,0 +1,11 @@
+{
+  "name": "course-lab-report",
+  "version": "0.2.0",
+  "description": "中文课程实验报告写作：方法理由、操作证据、结果解释与个人风格。",
+  "author": {
+    "name": "mengyoutianji-ux"
+  },
+  "homepage": "https://github.com/mengyoutianji-ux/course-lab-report-skill",
+  "repository": "https://github.com/mengyoutianji-ux/course-lab-report-skill",
+  "keywords": ["lab-report", "academic-writing", "chinese", "gis"]
+}

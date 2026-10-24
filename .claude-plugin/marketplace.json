@@ -1,0 +1,17 @@
+{
+  "name": "course-report-skills",
+  "owner": {
+    "name": "mengyoutianji-ux"
+  },
+  "metadata": {
+    "description": "课程实验报告写作技能",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "course-lab-report",
+      "source": "./",
+      "description": "依据匿名报告样本组织中文实验报告，并按需配合文档、分析和润色技能。"
+    }
+  ]
+}
