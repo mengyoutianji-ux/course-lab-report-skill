@@ -1,0 +1,14 @@
+# Local source reports, extracted text and review artifacts
+analysis/
+private/
+*.docx
+*.pdf
+*.zip
+*.png
+*.jpg
+*.jpeg
+*.local.*
+publication-check.json
+__pycache__/
+.DS_Store
+Thumbs.db
